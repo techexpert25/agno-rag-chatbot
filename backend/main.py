@@ -93,7 +93,6 @@ def delete_file(
     document_id: str = Path(..., description="Document ID"),
     file_name: str = Query(..., description="Original file name"),
 ):
-    # 1️⃣ delete DB + disk using document_id
     file_deleted = delete_uploaded_file(document_id)
 
     if not file_deleted:
@@ -102,11 +101,9 @@ def delete_file(
             detail="File not found",
         )
 
-    # 2️⃣ delete Pinecone vectors using document_id
     pinecone_deleted = handle_delete_pdf(file_name)
 
     if not pinecone_deleted:
-        # not fatal, but worth logging
         raise HTTPException(
             status_code=404,
             detail="File not found",

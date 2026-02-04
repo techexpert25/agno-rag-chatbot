@@ -1,0 +1,30 @@
+# Cursor Rules for AgnoNiceGUI Python Challenge
+
+## Project Context
+This is a RAG chatbot built with FastAPI, Agno, and NiceGUI. The codebase emphasizes:
+- Simple, clean, maintainable code
+- Modern Python typing (3.13+, list[str], str | None)
+- Heavy use of Pydantic models
+- Async/streaming patterns
+- Minimal abstractions
+
+## Code Style
+- Use modern Python typing: `list[str]`, `str | None`, not `List[str]`, `Optional[str]`
+- Prefer Pydantic models over raw dicts
+- Keep functions small and focused
+- Leverage Agno/FastAPI/Pydantic built-ins rather than reinventing
+- All docstrings and comments must emulate Master Yoda's talking style
+
+## Testing
+- Use pytest with pytest_check for assertions
+- Use pytest.raises for expected errors
+- Keep tests small and honest
+- No mocks in integration tests
+- Real sample files in tests/data
+
+## Architecture
+- FastAPI handles backend/API layer
+- Agno handles agent/orchestration
+- NiceGUI is thin UI layer
+- Prefer Agno's built-in features (session/history/knowledge) over custom layers
+
